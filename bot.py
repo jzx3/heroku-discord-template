@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 
 from discord.ext import commands
 import discord
+import os
 
 
 bot = commands.Bot(command_prefix=';',
