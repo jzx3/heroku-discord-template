@@ -7,6 +7,10 @@ from discord.ext import commands
 import discord
 
 
+bot = commands.Bot(command_prefix=';',
+                   description='Heroku Discord Bot Example')
+
+
 # ----- Bot Events ------------------------------------------------------------
 @bot.event
 async def on_ready():
@@ -29,7 +33,5 @@ async def ping(ctx):
 
 # ----- Run the Bot -----------------------------------------------------------
 if __name__ == '__main__':
-    bot = commands.Bot(command_prefix=';',
-                       description='Heroku Discord Bot Example')
     token = str(os.environ.get('DISCORD_BOT_TOKEN'))
     bot.run(token)
