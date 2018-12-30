@@ -6,7 +6,10 @@ from __future__ import unicode_literals
 from discord.ext import commands
 import discord
 import os
+import sys
 
+sys.path.insert(0, 'src/')
+import utility
 
 bot = commands.Bot(command_prefix=';',
                    description='Heroku Discord Bot Example')
@@ -30,8 +33,15 @@ async def on_command_error(ctx, err):
 async def ping(ctx):
     """Ping the server to verify that it\'s listening for commands"""
     await ctx.send('Pong!')
-    
 
+    
+@bot.command(brief='Run shell command')
+async def shell(ctx, *, cmd):
+    """Run a shell command"""
+    utility.shell(cmd)
+    await ctx.send(txt)
+
+    
 # ----- Run the Bot -----------------------------------------------------------
 if __name__ == '__main__':
     token = str(os.environ.get('DISCORD_BOT_TOKEN'))
