@@ -45,7 +45,7 @@ async def ping(ctx):
 
     
 @bot.command(brief='Run shell command')
-@command.is_owner()
+@commands.is_owner()
 async def shell(ctx, *, cmd):
     """Run a shell command"""
     txt = utility.shell_cmd(cmd)
