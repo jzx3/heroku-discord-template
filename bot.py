@@ -19,7 +19,7 @@ logging.basicConfig(
     format = "{asctime} [{levelname:<8}] {name}: {message}")
     # level="INFO")
 bot = commands.Bot(command_prefix=';',
-                   description='Heroku Discord Bot Example')                   description=BOT_DESCRIPTION)
+                   description='Heroku Discord Bot Example')
 setattr(bot, "logger", logging.getLogger("bot.py"))
 
 
