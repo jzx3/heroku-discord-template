@@ -5,14 +5,22 @@ from __future__ import unicode_literals
 
 from discord.ext import commands
 import discord
+import logging
 import os
 import sys
 
 sys.path.insert(0, 'src/')
 import utility
 
+logging.basicConfig(
+    level=logging.INFO,
+    style = '{',
+    datefmt = "%Y%m%d %H:%M:%S",
+    format = "{asctime} [{levelname:<8}] {name}: {message}")
+    # level="INFO")
 bot = commands.Bot(command_prefix=';',
-                   description='Heroku Discord Bot Example')
+                   description='Heroku Discord Bot Example')                   description=BOT_DESCRIPTION)
+setattr(bot, "logger", logging.getLogger("bot.py"))
 
 
 # ----- Bot Events ------------------------------------------------------------
@@ -36,6 +44,7 @@ async def ping(ctx):
 
     
 @bot.command(brief='Run shell command')
+@command.is_owner()
 async def shell(ctx, *, cmd):
     """Run a shell command"""
     txt = utility.shell_cmd(cmd)
