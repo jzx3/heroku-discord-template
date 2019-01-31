@@ -51,6 +51,17 @@ async def shell(ctx, *, cmd):
     txt = utility.shell_cmd(cmd)
     await ctx.send(txt)
 
+
+@bot.command(brief='About this bot')
+@commands.is_owner()
+async def about(ctx):
+    """Gives a description for this bot"""
+    txt = """This bot serves as a template for a Discord bot
+          that can be hosted on Heroku.
+          The Github page for this bot is: https://github.com/jzx3/heroku-discord-template
+          """
+    await ctx.send(txt)
+
     
 # ----- Run the Bot -----------------------------------------------------------
 if __name__ == '__main__':
